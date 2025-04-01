@@ -1,0 +1,17 @@
+.home-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-link {
+  user-select: none;
+  font-size: 1.1em;
+}
+
+.profile-link a {
+  text-decoration: none;
+}
+
+.profile-link label {
+  margin-left: 10px;
+}

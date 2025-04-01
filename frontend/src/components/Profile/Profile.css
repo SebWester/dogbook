@@ -1,0 +1,27 @@
+.is-here {
+  color: green;
+}
+
+.not-here {
+  color: red;
+}
+
+.profile-link {
+  margin: 5px auto;
+}
+
+.profile-link a {
+  display: inline-block;
+}
+
+.profile-link a:hover {
+  transform: scale(1.2);
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}

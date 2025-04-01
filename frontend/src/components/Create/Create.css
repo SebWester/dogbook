@@ -1,0 +1,20 @@
+.create-new-button {
+  margin-top: 20px;
+  /* padding: 10px; */
+  border-top: 2px solid;
+}
+
+.create-new-button a {
+  display: block;
+  width: fit-content;
+  margin: 15px auto;
+  padding: 3px;
+  font-size: 1em;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.create-new-button a:hover {
+  background: whitesmoke;
+}
