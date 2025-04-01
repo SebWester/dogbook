@@ -1,0 +1,12 @@
+.update-dog-info form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: auto;
+}
+
+.update-dog-info form input,
+.update-dog-info form textarea {
+  margin-bottom: 20px;
+  text-align: center;
+}

@@ -28,7 +28,13 @@ function Profile() {
         )}
         {dog.friends.map(renderFriends)}
       </ul>
-      <Link to={"/"}>To dashboard</Link>
+
+      <div className="redirects">
+        <Link to={"/"}>To dashboard</Link>
+        <Link to={`/update/${dog.name}`} state={dog}>
+          Update dog info
+        </Link>
+      </div>
     </div>
   );
 }
