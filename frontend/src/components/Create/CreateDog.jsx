@@ -5,6 +5,8 @@ import "./Create.css";
 function CreateDog() {
   // add submit handler
 
+  // Fix layout
+
   return (
     <div className="new-dog">
       <h2>Create new dog</h2>

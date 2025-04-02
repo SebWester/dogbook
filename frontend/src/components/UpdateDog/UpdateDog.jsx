@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { updateDogInfo } from "../../services/updateDog.js";
+import fetchDogs from "../../services/fetchDogs.js";
 import "./Update.css";
 
 function UpdateDog() {
@@ -61,6 +62,8 @@ function UpdateDog() {
 
         <input type="submit" value="Save" />
       </form>
+
+      <Link to="/">To dashboard</Link>
     </div>
   );
 }
