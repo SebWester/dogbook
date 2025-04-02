@@ -1,6 +1,5 @@
 import express from "express";
 import { dogs } from "../models/dogSchema.js";
-import { updateDogInfo } from "../../frontend/src/services/updateDog.js";
 
 const updateRouter = express.Router();
 
