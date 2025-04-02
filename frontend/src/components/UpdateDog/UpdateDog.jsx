@@ -27,6 +27,8 @@ function UpdateDog() {
     }));
   }
 
+  // add function for updating profile pic
+
   return (
     <div className="update-dog-info">
       <h1>Update dog info</h1>
@@ -35,7 +37,8 @@ function UpdateDog() {
         <label htmlFor="changedName">New name: </label>
         <input
           type="text"
-          placeholder={`${thisDog.name}`}
+          placeholder={`${newDogInfo.changedName}`}
+          value={`${newDogInfo.changedName}`}
           id="changedName"
           onChange={handleChange}
         />
@@ -45,7 +48,8 @@ function UpdateDog() {
         <input
           type="number"
           id="changedAge"
-          placeholder={`${thisDog.age}`}
+          placeholder={`${newDogInfo.changedAge}`}
+          value={`${newDogInfo.changedAge}`}
           min={0}
           max={20}
           onChange={handleChange}
@@ -57,6 +61,7 @@ function UpdateDog() {
           id="changedBio"
           maxLength="150"
           placeholder={`${thisDog.bio}`}
+          value={`${newDogInfo.changedBio}`}
           onChange={handleChange}
         ></textarea>
 

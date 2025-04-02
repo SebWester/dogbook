@@ -6,6 +6,7 @@ function CreateDog() {
   // add submit handler
 
   // Fix layout
+  // Fix function for uploading profile pic
 
   return (
     <div className="new-dog">
