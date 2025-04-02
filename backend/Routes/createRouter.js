@@ -7,7 +7,7 @@ createRouter.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const { name, age, bio } = req.body;
-    // Save dog to DB
+    console.log("name:", name, "age:", age, "bio:", bio);
 
     const newDog = new dogs({
       name: name,
