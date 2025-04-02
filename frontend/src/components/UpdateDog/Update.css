@@ -10,3 +10,8 @@
   margin-bottom: 20px;
   text-align: center;
 }
+
+#changedBio {
+  resize: none;
+  height: 150px;
+}

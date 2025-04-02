@@ -18,4 +18,14 @@ updateRouter.put("/checkin", async (req, res) => {
   }
 });
 
+updateRouter.put("/doginfo", async (req, res) => {
+  try {
+    console.log(req.body);
+    res.status(200).json({ body: req.body });
+  } catch (err) {
+    console.error("Something went wrong:", err);
+    res.status(500).json({ error: err });
+  }
+});
+
 export default updateRouter;

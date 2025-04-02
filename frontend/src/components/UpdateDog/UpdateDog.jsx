@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { updateDogInfo } from "../../services/updateDog.js";
 import "./Update.css";
 
 function UpdateDog() {
@@ -11,13 +12,10 @@ function UpdateDog() {
     changedBio: `${thisDog.bio}`,
   });
 
-  // console.log(newDogInfo);
-
   //   On submit handler!
   function submitHandler(e) {
     e.preventDefault();
-    console.log(thisDog);
-    console.log(newDogInfo);
+    updateDogInfo(thisDog._id, newDogInfo);
   }
 
   function handleChange(e) {
