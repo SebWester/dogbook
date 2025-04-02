@@ -7,7 +7,7 @@ createRouter.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const { name, age, bio } = req.body;
-    console.log("name:", name, "age:", age, "bio:", bio);
+    // console.log("name:", name, "age:", age, "bio:", bio);
 
     const newDog = new dogs({
       name: name,
@@ -18,10 +18,7 @@ createRouter.post("/", async (req, res) => {
     });
 
     await newDog.save();
-
-    res
-      .status(200)
-      .json({ status: "Ok", savedName: name, savedAge: age, savedBio: bio });
+    res.status(200).json({ savedDog: newDog });
   } catch (err) {
     console.error("Could not post:", err);
   }

@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createNewDog, picUpload } from "../../services/createDog";
 import "./Create.css";
+
+/*
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  KOPPLA IHOP PROFILBILD MED NY HUND
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
 
 function CreateDog() {
   const [newDog, setNewDog] = useState({ name: "", age: "", bio: "" });
@@ -14,6 +20,7 @@ function CreateDog() {
   function handleSubmit(e) {
     e.preventDefault();
     createNewDog(newDog);
+
     picUpload(profilePic);
   }
 

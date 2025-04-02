@@ -9,7 +9,7 @@ async function createNewDog(dogData) {
   });
 
   const data = await resp.json();
-  console.log(dogData);
+  return data.savedDog;
 }
 
 // Upload profile picture
