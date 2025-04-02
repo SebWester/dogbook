@@ -18,14 +18,16 @@ function ProfileLink({ dog }) {
         {dog.name}
       </Link>
 
-      <label htmlFor={dog._id}>Is here:</label>
-      <input
-        type="checkbox"
-        id={dog._id}
-        checked={isHere}
-        onChange={() => setIsHere((prevVal) => !prevVal)}
-        onClick={() => handleCheckIn(dog._id)}
-      />
+      <span className="check-in-dog">
+        <label htmlFor={dog._id}>Is here:</label>
+        <input
+          type="checkbox"
+          id={dog._id}
+          checked={isHere}
+          onChange={() => setIsHere((prevVal) => !prevVal)}
+          onClick={() => handleCheckIn(dog._id)}
+        />
+      </span>
     </div>
   );
 }

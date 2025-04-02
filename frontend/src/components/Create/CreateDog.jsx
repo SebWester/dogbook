@@ -24,9 +24,12 @@ function CreateDog() {
     <div className="new-dog">
       <h2>Create new dog</h2>
       <form action="" className="create-form" onSubmit={handleSubmit}>
+        {/* <div> */}
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" onChange={handleInput} />
+        {/* </div> */}
 
+        {/* <div> */}
         <label htmlFor="age">Age:</label>
         <input
           type="number"
@@ -36,9 +39,12 @@ function CreateDog() {
           step={1}
           onChange={handleInput}
         />
+        {/* </div> */}
 
+        {/* <div> */}
         <label htmlFor="bio">Bio:</label>
         <textarea id="bio" onChange={handleInput}></textarea>
+        {/* </div> */}
 
         <input type="submit" value="Save" id="submit-button" />
       </form>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProfileLink from "./Profile/ProfileLinks.jsx";
 import CreateButton from "./Create/CreateButton.jsx";
 import fetchDogs from "../services/fetchDogs.js";
-import "./Home.css";
+import "./Dashboard.css";
 
 function Dashboard() {
   const [dogs, setDogs] = useState([]);
@@ -19,7 +19,7 @@ function Dashboard() {
 
   return (
     <div className="home-div">
-      <h1>Test</h1>
+      <h1>Dogbook Dashboard</h1>
       {/* Renderar varje hundprofil som en komponent */}
       {dogs.length > 0 ? (
         dogs.map((dog) => <ProfileLink key={dog._id} dog={dog} />)

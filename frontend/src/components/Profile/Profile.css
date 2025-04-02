@@ -1,9 +1,13 @@
 .is-here {
   color: green;
+  width: 80px;
+  font-weight: 800;
 }
 
 .not-here {
   color: red;
+  width: 80px;
+  font-style: italic;
 }
 
 .profile-link {
@@ -24,4 +28,11 @@ ul {
 
 li {
   list-style: none;
+}
+
+.check-in-dog label:hover,
+.check-in-dog input {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
 }
