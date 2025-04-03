@@ -18,30 +18,21 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 createRouter.post("/", upload.single("profilePic"), async (req, res) => {
-  // try {
-  //   console.log(req.body);
-  // res.status(200).json({ data: req.body });
-  // } catch (err) {
-  //   console.error("Something went wrong:", err);
-  //   res.status(500).json({ error: "Error uploading data", error });
-  // }
-
   try {
     const { name, age, bio } = req.body;
-    const profilePic = req.file;
-    console.log("Data received:", { name, age, bio, profilePic });
+    const profilePic = req.file ? req.file.path : null;
 
-    // const newDog = new dogs({
-    //   name: name,
-    //   age: age,
-    //   bio: bio,
-    //   checkedIn: false,
-    //   friends: [],
-    // });
+    const newDog = new dogs({
+      profilePic: profilePic,
+      name: name,
+      age: age,
+      bio: bio,
+      checkedIn: false,
+      friends: [],
+    });
 
-    // await newDog.save();
-    // res.status(200).json({ savedDog: newDog });
-    res.status(200).json({ data: req.body });
+    await newDog.save();
+    res.status(200).json({ savedDog: newDog });
   } catch (err) {
     console.error("Could not post:", err);
   }

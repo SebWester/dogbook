@@ -6,6 +6,11 @@ function Profile() {
   const dog = location.state;
   const friends = dog.friends;
 
+  console.log(dog.profilePic);
+  const profileImage = dog.profilePic;
+  const imgPath = profileImage.replace(/^uploads/, "");
+  console.log(imgPath);
+
   function renderFriends(d) {
     return <li>{d.friends}</li>;
   }
@@ -13,6 +18,7 @@ function Profile() {
   return (
     <div>
       {/* Add image */}
+      <img src={`http://localhost:3000${imgPath}`} alt="Profile picture" />
 
       <h2>{dog.name}</h2>
       <h3>{dog.age}</h3>
