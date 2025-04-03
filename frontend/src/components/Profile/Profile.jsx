@@ -18,7 +18,11 @@ function Profile() {
   return (
     <div>
       {/* Add image */}
-      <img src={`http://localhost:3000${imgPath}`} alt="Profile picture" />
+      <img
+        src={`http://localhost:3000${imgPath}`}
+        alt="Profile picture"
+        className="profile-pic"
+      />
 
       <h2>{dog.name}</h2>
       <h3>{dog.age}</h3>
