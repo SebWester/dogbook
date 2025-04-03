@@ -6,10 +6,12 @@ function Profile() {
   const dog = location.state;
   const friends = dog.friends;
 
-  console.log(dog.profilePic);
-  const profileImage = dog.profilePic;
-  const imgPath = profileImage.replace(/^uploads/, "");
-  console.log(imgPath);
+  let imgPath = "/default-img.webp";
+
+  if (dog.profilePic) {
+    const profileImage = dog.profilePic;
+    imgPath = profileImage.replace(/^uploads/, "");
+  }
 
   function renderFriends(d) {
     return <li>{d.friends}</li>;
@@ -17,7 +19,6 @@ function Profile() {
 
   return (
     <div>
-      {/* Add image */}
       <img
         src={`http://localhost:3000${imgPath}`}
         alt="Profile picture"

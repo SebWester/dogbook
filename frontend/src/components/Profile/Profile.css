@@ -25,7 +25,11 @@
 .profile-pic {
   width: 200px;
   height: 200px;
+  border: 2px solid darkblue;
   border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
 }
 
 ul {
