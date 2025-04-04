@@ -1,5 +1,2 @@
 • FIXA:
-* Möjlighet att ta bort hund
-* Lägga till profilbild
 * Lägga till/ta bort vänner
-* Visa vänlista
