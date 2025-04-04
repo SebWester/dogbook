@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import fetchDogs from "../../services/fetchDogs";
+import addFriend from "../../services/addFriend";
 
 function Profile() {
   const location = useLocation();
@@ -17,6 +17,8 @@ function Profile() {
   function renderFriends(d) {
     return <li>{d.friends}</li>;
   }
+
+  addFriend(dog._id);
 
   return (
     <div>
