@@ -46,3 +46,21 @@ li {
   cursor: pointer;
   font-weight: bold;
 }
+
+.remove-dog {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.remove-dog button {
+  display: inline-block;
+  background: rgba(255, 165, 0, 0.5);
+  border-radius: 10px;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.remove-dog button:hover {
+  cursor: pointer;
+  background: rgba(255, 165, 0, 0.8);
+}

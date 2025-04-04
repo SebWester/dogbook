@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
+import fetchDogs from "../../services/fetchDogs";
 
 function Profile() {
   const location = useLocation();

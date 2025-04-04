@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { updateCheckIn } from "../../services/updateDog.js";
+import deleteDog from "../../services/deleteDog.js";
 import "./Profile.css";
 
 function ProfileLink({ dog }) {
@@ -28,6 +29,10 @@ function ProfileLink({ dog }) {
           onClick={() => handleCheckIn(dog._id)}
         />
       </span>
+
+      <div className="remove-dog">
+        <button onClick={() => deleteDog(dog._id)}>Remove dog</button>
+      </div>
     </div>
   );
 }
