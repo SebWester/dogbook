@@ -5,9 +5,9 @@ async function addFriend(id) {
   const data = await resp.json();
 
   const allDogs = data.dogs;
-  const befriend = allDogs.filter((d) => d._id !== id);
+  const possibleFriends = allDogs.filter((d) => d._id !== id);
 
-  console.log(befriend);
+  return possibleFriends;
 }
 
 export default addFriend;
