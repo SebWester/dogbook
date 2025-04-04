@@ -24,11 +24,13 @@ import createRouter from "./Routes/createRouter.js";
 import fetchRouter from "./Routes/fetchRouter.js";
 import updateRouter from "./Routes/updateRouter.js";
 import uploadRouter from "./Routes/uploadRouter.js";
+import deleteRouter from "./Routes/deleteRoute.js";
 
 app.use("/create", createRouter);
 app.use("/dogdata", fetchRouter);
 app.use("/update", updateRouter);
 app.use("/upload", uploadRouter);
+app.use("/delete-dog", deleteRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}🚀`);
