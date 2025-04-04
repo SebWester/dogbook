@@ -35,7 +35,7 @@ function Profile() {
   function renderAddFriend(d) {
     // onClick function to add friend
     return (
-      <li key={d._id}>
+      <li key={d._id} className="add-friend-div">
         <button>{d.name}</button>
       </li>
     );

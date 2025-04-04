@@ -64,3 +64,13 @@ li {
   cursor: pointer;
   background: rgba(255, 165, 0, 0.8);
 }
+
+.add-friend-div {
+  margin: 10px auto;
+}
+
+.add-friend-div button {
+  background: none;
+  padding: 4px;
+  border-radius: 10px;
+}
