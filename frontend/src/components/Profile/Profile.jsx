@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import addFriend from "../../services/addFriend";
+import { addFriend, friendRequest } from "../../services/addFriend";
 
 function Profile() {
   const [otherDogs, setOtherDogs] = useState([]);
@@ -36,7 +36,9 @@ function Profile() {
     // onClick function to add friend
     return (
       <li key={d._id} className="add-friend-div">
-        <button>{d.name}</button>
+        <button onClick={() => friendRequest(dog._id, d._id)}>
+          + {d.name}
+        </button>
       </li>
     );
   }
@@ -59,7 +61,7 @@ function Profile() {
         {friends.length > 0 ? (
           dog.friends.map(renderFriends)
         ) : (
-          <li>No friends to display</li>
+          <li style={{ fontStyle: "italic" }}>No friends to display</li>
         )}
         {dog.friends.map(renderFriends)}
       </ul>

@@ -72,5 +72,11 @@ li {
 .add-friend-div button {
   background: none;
   padding: 4px;
-  border-radius: 10px;
+  border: none;
+}
+
+.add-friend-div button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  font-weight: 900px;
 }

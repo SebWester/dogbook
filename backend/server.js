@@ -13,11 +13,6 @@ mongoDB();
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use(express.static("uploads"));
-// app.use(express.static(path.join(__dirname, "uploads")));
-// app.use((req, res, next) => {
-//   console.log(`Request URL: ${req.url}`);
-//   next();
-// });
 
 // Routes
 import createRouter from "./Routes/createRouter.js";
@@ -25,12 +20,14 @@ import fetchRouter from "./Routes/fetchRouter.js";
 import updateRouter from "./Routes/updateRouter.js";
 import uploadRouter from "./Routes/uploadRouter.js";
 import deleteRouter from "./Routes/deleteRoute.js";
+import addFriendRouter from "./Routes/addFriendRouter.js";
 
 app.use("/create", createRouter);
 app.use("/dogdata", fetchRouter);
 app.use("/update", updateRouter);
 app.use("/upload", uploadRouter);
 app.use("/delete-dog", deleteRouter);
+app.use("/add-friend", addFriendRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}🚀`);
