@@ -2,7 +2,7 @@ const API_URL = "http://localhost:3000/update";
 
 // Update checked in status
 async function updateCheckIn(id) {
-  const resp = await fetch(API_URL + "checkin", {
+  const resp = await fetch(API_URL + "/checkin", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ dogId: id }),
