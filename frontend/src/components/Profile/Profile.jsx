@@ -27,8 +27,13 @@ function Profile() {
   }
 
   // Render dogs friends
-  function renderFriends(d) {
-    return <li>{d.friends}</li>;
+  function renderFriends(friend) {
+    console.log(friend);
+    return (
+      <li key={friend.id}>
+        <Link to={`/profile/${friend.name}`}>{friend.name}</Link>
+      </li>
+    );
   }
 
   // Render dogs to add as friend
@@ -63,7 +68,6 @@ function Profile() {
         ) : (
           <li style={{ fontStyle: "italic" }}>No friends to display</li>
         )}
-        {dog.friends.map(renderFriends)}
       </ul>
 
       {/* Add new friend list */}

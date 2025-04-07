@@ -15,7 +15,7 @@ async function friendRequest(thisDogId, friendDogID) {
   console.log("Dog 2:", friendDogID);
 
   const resp = await fetch(API_URL + "add-friend", {
-    method: "POST",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ thisDog: thisDogId, friendDog: friendDogID }),
   });
