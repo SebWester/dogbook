@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import createNewDog from "../../services/createDog.js";
 import "./Create.css";
 
-/*
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  KOPPLA IHOP PROFILBILD MED NY HUND
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-*/
-
 function CreateDog() {
   const [newDog, setNewDog] = useState({ name: "", age: "", bio: "" });
   const [profilePic, setProfilePic] = useState(null);
@@ -18,7 +12,7 @@ function CreateDog() {
 
   // add submit handler
   function handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append("name", newDog.name);
     formData.append("age", newDog.age);

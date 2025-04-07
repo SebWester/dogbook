@@ -1,44 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { addFriend, friendRequest } from "../../services/addFriend";
+import {
+  addFriend,
+  friendRequest,
+  GetDogFriendList,
+} from "../../services/addFriend";
 
 function Profile() {
   const [otherDogs, setOtherDogs] = useState([]);
-  useEffect(() => {
-    async function getOtherDogs() {
-      const possibleFriends = await addFriend(dog._id);
-
-      setOtherDogs(possibleFriends);
-    }
-
-    getOtherDogs();
-  }, []);
-
+  const [friendsDetails, setFriendsDetails] = useState([]);
   const location = useLocation();
   const dog = location.state;
   const friends = dog.friends;
 
+  // Hämta andra hundar som kan bli vänner
+  useEffect(() => {
+    async function getOtherDogs() {
+      const possibleFriends = await addFriend(dog._id);
+      setOtherDogs(possibleFriends);
+    }
+    getOtherDogs();
+  }, [dog._id]);
+
+  // Hämta detaljer för varje vän
+  useEffect(() => {
+    async function getFriendsDetails() {
+      const details = await Promise.all(
+        friends.map(async (friend) => {
+          const data = await GetDogFriendList(friend._id);
+          return data.dog; // Returnera hundens information
+        })
+      );
+      setFriendsDetails(details); // Sätt alla hundar i state
+    }
+
+    if (friends.length > 0) {
+      getFriendsDetails();
+    }
+  }, [friends]);
+
+  console.log(location.state);
+
   // Default image if no profile picture is uploaded
   let imgPath = "/default-img.webp";
-
   if (dog.profilePic) {
     const profileImage = dog.profilePic;
     imgPath = profileImage.replace(/^uploads/, "");
   }
 
-  // Render dogs friends
-  function renderFriends(friend) {
-    console.log(friend);
-    return (
-      <li key={friend.id}>
-        <Link to={`/profile/${friend.name}`}>{friend.name}</Link>
-      </li>
-    );
-  }
-
   // Render dogs to add as friend
   function renderAddFriend(d) {
-    // onClick function to add friend
     return (
       <li key={d._id} className="add-friend-div">
         <button onClick={() => friendRequest(dog._id, d._id)}>
@@ -55,16 +66,23 @@ function Profile() {
         alt="Profile picture"
         className="profile-pic"
       />
-
       <h2>{dog.name}</h2>
       <h3>{dog.age}</h3>
       <p>
         <i>"{dog.bio}"</i>
       </p>
+
+      {/* RENDER FRIENDS */}
       <h4>Friends</h4>
       <ul>
-        {friends.length > 0 ? (
-          dog.friends.map(renderFriends)
+        {friendsDetails.length > 0 ? (
+          friendsDetails.map((friendDog) => (
+            <li key={friendDog._id}>
+              <Link to={`/profile/${friendDog.name}`} state={friendDog}>
+                {friendDog.name}
+              </Link>
+            </li>
+          ))
         ) : (
           <li style={{ fontStyle: "italic" }}>No friends to display</li>
         )}

@@ -10,9 +10,17 @@ async function addFriend(id) {
   return possibleFriends;
 }
 
+async function GetDogFriendList(id) {
+  const resp = await fetch(`${API_URL}add-friend/friendlist?id=${id}`);
+  const data = await resp.json();
+
+  console.log(data);
+  return data;
+}
+
 async function friendRequest(thisDogId, friendDogID) {
-  console.log("Dog 1:", thisDogId);
-  console.log("Dog 2:", friendDogID);
+  // console.log("Dog 1:", thisDogId);
+  // console.log("Dog 2:", friendDogID);
 
   const resp = await fetch(API_URL + "add-friend", {
     method: "PUT",
@@ -24,4 +32,4 @@ async function friendRequest(thisDogId, friendDogID) {
   console.log(data);
 }
 
-export { addFriend, friendRequest };
+export { addFriend, friendRequest, GetDogFriendList };
