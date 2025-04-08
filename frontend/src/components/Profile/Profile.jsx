@@ -56,7 +56,9 @@ function Profile() {
 
     return (
       <li key={d._id} className="add-friend-div">
-        <button onClick={() => friendRequest(dog._id, d._id)}>
+        <button
+          onClick={() => friendRequest(dog._id, d._id, setFriendsDetails)}
+        >
           + {d.name}
         </button>
       </li>

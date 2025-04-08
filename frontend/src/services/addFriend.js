@@ -18,7 +18,8 @@ async function GetDogFriendList(id) {
   return data;
 }
 
-async function friendRequest(thisDogId, friendDogID) {
+async function friendRequest(thisDogId, friendDogID, setFriendDetails) {
+  // window.location.reload();
   // console.log("Dog 1:", thisDogId);
   // console.log("Dog 2:", friendDogID);
 
@@ -29,7 +30,9 @@ async function friendRequest(thisDogId, friendDogID) {
   });
 
   const data = await resp.json();
-  console.log(data);
+  if (data.newFriend) {
+    setFriendDetails((prevState) => [...prevState, data.newFriend]);
+  }
 }
 
 export { addFriend, friendRequest, GetDogFriendList };
