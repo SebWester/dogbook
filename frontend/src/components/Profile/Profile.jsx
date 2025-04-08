@@ -80,7 +80,7 @@ function Profile() {
 
       {/* RENDER FRIENDS */}
       <h4>Friends</h4>
-      <ul>
+      <ul className="friend-list">
         {friendsDetails.length > 0 ? (
           friendsDetails.map((friendDog) => (
             <li key={friendDog._id}>
