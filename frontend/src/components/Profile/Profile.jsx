@@ -13,6 +13,13 @@ function Profile() {
   const dog = location.state;
   const friends = dog.friends;
 
+  // Default image if no profile picture is uploaded
+  let imgPath = "/default-img.webp";
+  if (dog.profilePic) {
+    const profileImage = dog.profilePic;
+    imgPath = profileImage.replace(/^uploads/, "");
+  }
+
   useEffect(() => {
     async function getOtherDogs() {
       const possibleFriends = await addFriend(dog._id);
@@ -39,15 +46,14 @@ function Profile() {
 
   console.log(location.state);
 
-  // Default image if no profile picture is uploaded
-  let imgPath = "/default-img.webp";
-  if (dog.profilePic) {
-    const profileImage = dog.profilePic;
-    imgPath = profileImage.replace(/^uploads/, "");
-  }
-
   // Render dogs to add as friend
   function renderAddFriend(d) {
+    const alreadyFriend = friendsDetails.some((friend) => friend._id === d._id);
+
+    if (alreadyFriend) {
+      return null;
+    }
+
     return (
       <li key={d._id} className="add-friend-div">
         <button onClick={() => friendRequest(dog._id, d._id)}>
