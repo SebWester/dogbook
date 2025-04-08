@@ -13,7 +13,6 @@ function Profile() {
   const dog = location.state;
   const friends = dog.friends;
 
-  // Hämta andra hundar som kan bli vänner
   useEffect(() => {
     async function getOtherDogs() {
       const possibleFriends = await addFriend(dog._id);
@@ -22,16 +21,15 @@ function Profile() {
     getOtherDogs();
   }, [dog._id]);
 
-  // Hämta detaljer för varje vän
   useEffect(() => {
     async function getFriendsDetails() {
       const details = await Promise.all(
         friends.map(async (friend) => {
           const data = await GetDogFriendList(friend._id);
-          return data.dog; // Returnera hundens information
+          return data.dog;
         })
       );
-      setFriendsDetails(details); // Sätt alla hundar i state
+      setFriendsDetails(details);
     }
 
     if (friends.length > 0) {
