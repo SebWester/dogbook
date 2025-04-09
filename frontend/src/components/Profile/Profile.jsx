@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import {
-  addFriend,
-  friendRequest,
-  GetDogFriendList,
-} from "../../services/addFriend";
 import { updateCheckIn } from "../../services/updateDog.js";
+import { addFriend, friendRequest } from "../../services/addFriend.js";
 
 function Profile() {
   const [otherDogs, setOtherDogs] = useState([]);
@@ -26,25 +22,14 @@ function Profile() {
   useEffect(() => {
     async function getOtherDogs() {
       const possibleFriends = await addFriend(dog._id);
+      console.log(possibleFriends);
       setOtherDogs(possibleFriends);
     }
     getOtherDogs();
   }, [dog._id]);
 
   useEffect(() => {
-    async function getFriendsDetails() {
-      const details = await Promise.all(
-        friends.map(async (friend) => {
-          const data = await GetDogFriendList(friend._id);
-          return data.dog;
-        })
-      );
-      setFriendsDetails(details);
-    }
-
-    if (friends.length > 0) {
-      getFriendsDetails();
-    }
+    setFriendsDetails(friends);
   }, [friends]);
 
   // Render dogs to add as friend

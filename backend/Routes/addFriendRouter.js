@@ -17,10 +17,20 @@ addFriendRouter.put("/", async (req, res) => {
     const thisDog = await dogs.findById({ _id: thisDogId });
     const friendDog = await dogs.findById(friendDogId);
 
-    if (!thisDog.friends.includes(friendDogId)) {
-      thisDog.friends.push(friendDog);
+    if (
+      !thisDog.friends.some((friend) => friend._id.toString() === friendDogId)
+    ) {
+      const cleanFriendDog = { ...friendDog.toObject() };
+      delete cleanFriendDog.friends;
+
+      const cleanThisDog = { ...thisDog.toObject() };
+      delete cleanThisDog.friends;
+
+      thisDog.friends.push(cleanFriendDog);
+      friendDog.friends.push(cleanThisDog);
 
       await thisDog.save();
+      await friendDog.save();
     }
 
     res.status(200).json({ newFriend: friendDog });
