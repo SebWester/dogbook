@@ -82,6 +82,7 @@ li {
   text-decoration: none;
   color: blue;
   margin: 5px auto;
+  width: 200px;
 }
 
 .friend-list a:hover {

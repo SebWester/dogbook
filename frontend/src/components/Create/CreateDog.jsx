@@ -32,8 +32,8 @@ function CreateDog() {
   return (
     <div className="new-dog">
       <h2>Create new dog</h2>
-      <form action="" className="create-form" onSubmit={handleSubmit}>
-        <label htmlFor="profile-pic">Upload profile picture</label>
+      <form className="create-form" onSubmit={handleSubmit}>
+        <label htmlFor="profile-pic">Profile picture:</label>
         <input
           type="file"
           id="profile-pic"

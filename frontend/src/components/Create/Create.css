@@ -27,6 +27,10 @@
   margin: auto;
 }
 
+#profile-pic {
+  margin: 10px auto;
+}
+
 .create-form form input,
 .create-form form textarea {
   margin-bottom: 20px;
