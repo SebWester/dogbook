@@ -5,13 +5,16 @@ import {
   friendRequest,
   GetDogFriendList,
 } from "../../services/addFriend";
+import { updateCheckIn } from "../../services/updateDog.js";
 
 function Profile() {
   const [otherDogs, setOtherDogs] = useState([]);
   const [friendsDetails, setFriendsDetails] = useState([]);
+
   const location = useLocation();
   const dog = location.state;
   const friends = dog.friends;
+  const [isHere, setIsHere] = useState(dog.checkedIn);
 
   // Default image if no profile picture is uploaded
   let imgPath = "/default-img.webp";
@@ -63,6 +66,11 @@ function Profile() {
     );
   }
 
+  function handleCheckIn(id) {
+    console.log("Clicked");
+    updateCheckIn(id);
+  }
+
   return (
     <div>
       <img
@@ -71,6 +79,18 @@ function Profile() {
         className="profile-pic"
       />
       <h2>{dog.name}</h2>
+
+      <span className="check-in-dog">
+        <label htmlFor={dog._id}>Is here:</label>
+        <input
+          type="checkbox"
+          id={dog._id}
+          checked={isHere}
+          onChange={() => setIsHere((prevVal) => !prevVal)}
+          onClick={() => handleCheckIn(dog._id)}
+        />
+      </span>
+
       <h3>{dog.age}</h3>
       <p>
         <i>"{dog.bio}"</i>

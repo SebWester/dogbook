@@ -1,13 +1,24 @@
 .is-here {
-  color: green;
+  font-weight: 900;
   width: 80px;
   font-weight: 800;
+  color: rgba(10, 140, 10, 0.8);
 }
 
 .not-here {
-  color: red;
   width: 80px;
   font-style: italic;
+  color: rgba(220, 40, 40, 1);
+}
+
+.checked-in {
+  background-color: rgba(40, 220, 40, 0.7);
+  border-radius: 50%;
+}
+
+.not-checked-in {
+  background-color: rgba(220, 40, 40, 0.8);
+  border-radius: 50%;
 }
 
 .profile-link {
@@ -16,6 +27,7 @@
 
 .profile-link a {
   display: inline-block;
+  margin-right: 10px;
 }
 
 .profile-link a:hover {
