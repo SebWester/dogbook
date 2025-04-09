@@ -9,7 +9,6 @@ function Profile() {
 
   const location = useLocation();
   const dog = location.state;
-  const friends = dog.friends;
   const [isHere, setIsHere] = useState(dog.checkedIn);
 
   // Default image if no profile picture is uploaded
@@ -19,6 +18,7 @@ function Profile() {
     imgPath = profileImage.replace(/^uploads/, "");
   }
 
+  // Get possible friends
   useEffect(() => {
     async function getOtherDogs() {
       const possibleFriends = await addFriend(dog._id);
@@ -28,9 +28,21 @@ function Profile() {
     getOtherDogs();
   }, [dog._id]);
 
+  // Get dogs friend list
   useEffect(() => {
-    setFriendsDetails(friends);
-  }, [friends]);
+    async function fetchFriends() {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/dogs/${dog._id}/friends`
+        );
+        const data = await response.json();
+        setFriendsDetails(data.friends);
+      } catch (error) {
+        console.error("Error fetching friends:", error);
+      }
+    }
+    fetchFriends();
+  }, [dog._id]);
 
   // Render dogs to add as friend
   function renderAddFriend(d) {

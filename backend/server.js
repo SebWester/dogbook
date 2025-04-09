@@ -21,6 +21,7 @@ import updateRouter from "./Routes/updateRouter.js";
 import uploadRouter from "./Routes/uploadRouter.js";
 import deleteRouter from "./Routes/deleteRoute.js";
 import addFriendRouter from "./Routes/addFriendRouter.js";
+import friendRouter from "./Routes/getFriendsRouter.js";
 
 app.use("/create", createRouter);
 app.use("/dogdata", fetchRouter);
@@ -28,6 +29,7 @@ app.use("/update", updateRouter);
 app.use("/upload", uploadRouter);
 app.use("/delete-dog", deleteRouter);
 app.use("/add-friend", addFriendRouter);
+app.use("/dogs", friendRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}🚀`);
