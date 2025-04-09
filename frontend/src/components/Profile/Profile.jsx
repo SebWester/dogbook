@@ -11,6 +11,18 @@ function Profile() {
   const dog = location.state;
   const [isHere, setIsHere] = useState(dog.checkedIn);
 
+  useEffect(() => {
+    async function dogStatus(id) {
+      const resp = await fetch("http://localhost:3000/dogdata");
+      const data = await resp.json();
+
+      const thisDog = data.dogs.find((d) => d._id === id);
+      setIsHere(thisDog.checkedIn);
+    }
+
+    dogStatus(dog._id);
+  }, [dog._id]);
+
   // Default image if no profile picture is uploaded
   let imgPath = "/default-img.webp";
   if (dog.profilePic) {
@@ -22,7 +34,6 @@ function Profile() {
   useEffect(() => {
     async function getOtherDogs() {
       const possibleFriends = await addFriend(dog._id);
-      console.log(possibleFriends);
       setOtherDogs(possibleFriends);
     }
     getOtherDogs();
@@ -64,7 +75,6 @@ function Profile() {
   }
 
   function handleCheckIn(id) {
-    console.log("Clicked");
     updateCheckIn(id);
   }
 
