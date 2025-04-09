@@ -20,7 +20,6 @@ updateRouter.put("/checkin", async (req, res) => {
 
 updateRouter.put("/doginfo", async (req, res) => {
   try {
-    console.log(req.body);
     const { id, updatedInfo } = req.body;
     const { changedName, changedAge, changedBio } = updatedInfo;
 

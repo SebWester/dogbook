@@ -14,15 +14,10 @@ async function GetDogFriendList(id) {
   const resp = await fetch(`${API_URL}add-friend/friendlist?id=${id}`);
   const data = await resp.json();
 
-  console.log(data);
   return data;
 }
 
 async function friendRequest(thisDogId, friendDogID, setFriendDetails) {
-  // window.location.reload();
-  // console.log("Dog 1:", thisDogId);
-  // console.log("Dog 2:", friendDogID);
-
   const resp = await fetch(API_URL + "add-friend", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

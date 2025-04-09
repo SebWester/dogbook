@@ -44,8 +44,6 @@ function Profile() {
     }
   }, [friends]);
 
-  console.log(location.state);
-
   // Render dogs to add as friend
   function renderAddFriend(d) {
     const alreadyFriend = friendsDetails.some((friend) => friend._id === d._id);

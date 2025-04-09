@@ -7,7 +7,6 @@ fetchRouter.get("/", async (req, res) => {
   try {
     const allDogs = await dogs.find({});
 
-    // console.log(dogs);
     res.status(200).json({ dogs: allDogs });
   } catch (err) {
     console.error("Could not fetch dog data:", err);

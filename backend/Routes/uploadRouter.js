@@ -1,7 +1,6 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
-import { dogs } from "../models/dogSchema.js";
 
 const uploadRouter = express.Router();
 
@@ -19,8 +18,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 uploadRouter.post("/", upload.single("profileImage"), async (req, res) => {
-  console.log(req.body);
-
   if (!req.file) return res.status(400).json({ message: "No file to upload" });
 
   try {

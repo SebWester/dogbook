@@ -17,9 +17,6 @@ addFriendRouter.put("/", async (req, res) => {
     const thisDog = await dogs.findById({ _id: thisDogId });
     const friendDog = await dogs.findById(friendDogId);
 
-    // console.log(thisDog);
-    // console.log(friendDog);
-
     if (!thisDog.friends.includes(friendDogId)) {
       thisDog.friends.push(friendDog);
 

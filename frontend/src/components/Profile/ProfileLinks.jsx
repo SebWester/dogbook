@@ -7,8 +7,6 @@ import "./Profile.css";
 function ProfileLink({ dog }) {
   const [isHere, setIsHere] = useState(dog.checkedIn);
 
-  console.log(dog);
-
   function handleCheckIn(id) {
     console.log("Clicked");
     updateCheckIn(id);
