@@ -15,6 +15,7 @@ function CreateDog() {
     // e.preventDefault();
     const formData = new FormData();
     formData.append("name", newDog.name);
+    formData.append("nickname", newDog.nickname);
     formData.append("age", newDog.age);
     formData.append("bio", newDog.bio);
     if (profilePic) {
@@ -42,6 +43,9 @@ function CreateDog() {
 
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" onChange={handleInput} required />
+
+        <label htmlFor="nickname">Nickname:</label>
+        <input type="text" id="nickname" onChange={handleInput} />
 
         <label htmlFor="age">Age:</label>
         <input

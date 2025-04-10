@@ -7,6 +7,7 @@ const allDogs = mongoose.Schema({
     required: false,
   },
   name: String,
+  nickname: String,
   age: Number,
   bio: String,
   checkedIn: Boolean,

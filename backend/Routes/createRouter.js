@@ -19,12 +19,13 @@ const upload = multer({ storage: storage });
 
 createRouter.post("/", upload.single("profilePic"), async (req, res) => {
   try {
-    const { name, age, bio } = req.body;
+    const { name, nickname, age, bio } = req.body;
     const profilePic = req.file ? req.file.path : null;
 
     const newDog = new dogs({
       profilePic: profilePic,
       name: name,
+      nickname: nickname,
       age: age,
       bio: bio,
       checkedIn: false,

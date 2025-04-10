@@ -36,6 +36,7 @@ function Profile() {
         className="profile-pic"
       />
       <h2>{dog.name}</h2>
+      <h3>{dog.nickname}</h3>
 
       <CheckInToggle
         id={dog._id}
