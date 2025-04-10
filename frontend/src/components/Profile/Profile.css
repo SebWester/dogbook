@@ -34,6 +34,11 @@
   transform: scale(1.2);
 }
 
+.profile-div {
+  background-color: rgba(245, 245, 245, 0.7);
+  padding: 5px;
+}
+
 .profile-pic {
   width: 200px;
   height: 200px;

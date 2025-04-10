@@ -79,7 +79,7 @@ function Profile() {
   }
 
   return (
-    <div>
+    <div className="profile-div">
       <img
         src={`http://localhost:3000${imgPath}`}
         alt="Profile picture"

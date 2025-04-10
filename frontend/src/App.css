@@ -1,5 +1,10 @@
 body {
   text-align: center;
+  background-image: url(https://www.everwallpaper.co.uk/cdn/shop/products/3000_1155_562dc670-27a9-4802-9d1d-6c7d8e8e4458.jpg?v=1739778794);
+}
+
+.main-div {
+  background-color: rgba(245, 245, 245, 0.7);
 }
 
 .redirects {
