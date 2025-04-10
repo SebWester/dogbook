@@ -21,11 +21,12 @@ updateRouter.put("/checkin", async (req, res) => {
 updateRouter.put("/doginfo", async (req, res) => {
   try {
     const { id, updatedInfo } = req.body;
-    const { changedName, changedAge, changedBio } = updatedInfo;
+    const { changedName, changedNick, changedAge, changedBio } = updatedInfo;
 
     const thisDog = await dogs.findById(id);
     const newDogInfo = await thisDog.updateOne({
       name: changedName,
+      nickname: changedNick,
       age: changedAge,
       bio: changedBio,
     });

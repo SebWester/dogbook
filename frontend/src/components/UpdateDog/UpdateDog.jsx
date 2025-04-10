@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { updateDogInfo } from "../../services/updateDog.js";
-import fetchDogs from "../../services/fetchDogs.js";
 import "./Update.css";
 
 function UpdateDog() {
@@ -9,6 +8,7 @@ function UpdateDog() {
   const thisDog = location.state;
   const [newDogInfo, setNewDogInfo] = useState({
     changedName: `${thisDog.name}`,
+    changedNick: `${thisDog.nickname}`,
     changedAge: `${thisDog.age}`,
     changedBio: `${thisDog.bio}`,
   });
@@ -40,6 +40,15 @@ function UpdateDog() {
           placeholder={`${newDogInfo.changedName}`}
           value={`${newDogInfo.changedName}`}
           id="changedName"
+          onChange={handleChange}
+        />
+        {/* Update nickname */}
+        <label htmlFor="changedNick">New nickname: </label>
+        <input
+          type="text"
+          placeholder={`${newDogInfo.changedNick}`}
+          value={`${newDogInfo.changedNick}`}
+          id="changedNick"
           onChange={handleChange}
         />
 

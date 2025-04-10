@@ -9,6 +9,7 @@ async function updateCheckIn(id) {
   });
 
   const data = await resp.json();
+  return data;
 }
 
 // Update dogs name, age and bio
@@ -20,7 +21,7 @@ async function updateDogInfo(id, newDogInfo) {
   });
 
   const data = await resp.json();
-  console.log(data);
+  return data;
 }
 
 export { updateCheckIn, updateDogInfo };
