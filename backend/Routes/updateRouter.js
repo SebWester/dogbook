@@ -15,6 +15,7 @@ updateRouter.put("/checkin", async (req, res) => {
     res.status(200).json({ dogId: thisDog });
   } catch (err) {
     console.log("Something went wrong:", err);
+    res.status(500).json({ error: err });
   }
 });
 

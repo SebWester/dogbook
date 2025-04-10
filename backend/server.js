@@ -1,9 +1,6 @@
 import express from "express";
 import cors from "cors";
-import path from "path";
 import mongoDB from "./database.js";
-
-const __dirname = new URL(".", import.meta.url).pathname;
 
 const app = express();
 const PORT = 3000;

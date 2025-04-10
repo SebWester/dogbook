@@ -12,7 +12,6 @@ deleteRouter.delete("/", async (req, res) => {
 
     // Delete profile pic if not null
     if (thisDog.profilePic !== null) {
-      console.log("Not null");
       try {
         await fs.unlink(imgPath);
       } catch (err) {
@@ -31,9 +30,6 @@ deleteRouter.delete("/", async (req, res) => {
         await dogs.updateOne(
           { _id: allDogs[i]._id },
           { $set: { friends: updatedFriends } }
-        );
-        console.log(
-          `Removed deleted dog from ${allDogs[i].name}'s friend list`
         );
       }
     }
