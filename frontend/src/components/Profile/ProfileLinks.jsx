@@ -11,7 +11,7 @@ function ProfileLink({ dog }) {
   return (
     <div className="profile-link" key={dog._id}>
       <Link to={`/profile/${dog.name}`} state={dog} className={`${checkedIn}`}>
-        {dog.name}
+        @{dog.name}
       </Link>
 
       <i className={`fa-regular fa-circle ${dogCheckedIn}`}></i>
