@@ -9,7 +9,6 @@ async function updateCheckIn(id) {
   });
 
   const data = await resp.json();
-  console.log(data);
 }
 
 // Update dogs name, age and bio

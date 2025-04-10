@@ -8,7 +8,6 @@ async function createNewDog(dogData) {
   });
 
   const data = await resp.json();
-  console.log(data);
 }
 
 export default createNewDog;
