@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
 import fs from "fs/promises";
@@ -40,6 +41,7 @@ updateRouter.put(
   async (req, res) => {
     try {
       const id = req.params.id;
+      const objectId = new mongoose.Types.ObjectId(id);
       const { name, nickname, age, bio } = req.body;
       const profilePic = req.file ? req.file.path : null;
 
@@ -67,6 +69,23 @@ updateRouter.put(
       const updatedDog = await dogs.findByIdAndUpdate(id, updatedFields, {
         new: true,
       });
+
+      // Uppdatera info i andras friend-list
+      await dogs.updateMany(
+        { "friends._id": objectId },
+        {
+          $set: {
+            "friends.$[friend].name": name,
+            "friends.$[friend].nickname": nickname,
+            "friends.$[friend].age": age,
+            "friends.$[friend].bio": bio,
+            "friends.$[friend].profilePic": profilePic || dog.profilePic,
+          },
+        },
+        {
+          arrayFilters: [{ "friend._id": objectId }],
+        }
+      );
 
       res.status(200).json({ newDog: updatedDog });
     } catch (err) {
