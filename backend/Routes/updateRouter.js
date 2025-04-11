@@ -1,7 +1,22 @@
 import express from "express";
+import multer from "multer";
+import path from "path";
+import fs from "fs/promises";
 import { dogs } from "../models/dogSchema.js";
 
 const updateRouter = express.Router();
+
+const storage = multer.diskStorage({
+  destination: "./uploads",
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // Update checked in status
 updateRouter.put("/checkin", async (req, res) => {
@@ -19,24 +34,46 @@ updateRouter.put("/checkin", async (req, res) => {
   }
 });
 
-updateRouter.put("/doginfo", async (req, res) => {
-  try {
-    const { id, updatedInfo } = req.body;
-    const { changedName, changedNick, changedAge, changedBio } = updatedInfo;
+updateRouter.put(
+  "/doginfo/:id",
+  upload.single("profilePic"),
+  async (req, res) => {
+    try {
+      const id = req.params.id;
+      const { name, nickname, age, bio } = req.body;
+      const profilePic = req.file ? req.file.path : null;
 
-    const thisDog = await dogs.findById(id);
-    const newDogInfo = await thisDog.updateOne({
-      name: changedName,
-      nickname: changedNick,
-      age: changedAge,
-      bio: changedBio,
-    });
+      const dog = await dogs.findById(id);
 
-    res.status(200).json({ newDog: newDogInfo });
-  } catch (err) {
-    console.error("Something went wrong:", err);
-    res.status(500).json({ error: err });
+      if (profilePic && dog.profilePic !== null) {
+        try {
+          await fs.unlink(dog.profilePic);
+        } catch (err) {
+          console.warn("Could not delete old profile pic");
+        }
+      }
+
+      const updatedFields = {
+        name,
+        nickname,
+        age,
+        bio,
+      };
+
+      if (profilePic) {
+        updatedFields.profilePic = profilePic;
+      }
+
+      const updatedDog = await dogs.findByIdAndUpdate(id, updatedFields, {
+        new: true,
+      });
+
+      res.status(200).json({ newDog: updatedDog });
+    } catch (err) {
+      console.error("Something went wrong:", err);
+      res.status(500).json({ error: err });
+    }
   }
-});
+);
 
 export default updateRouter;

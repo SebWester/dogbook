@@ -14,10 +14,9 @@ async function updateCheckIn(id) {
 
 // Update dogs name, age and bio
 async function updateDogInfo(id, newDogInfo) {
-  const resp = await fetch(API_URL + "/doginfo", {
+  const resp = await fetch(API_URL + "/doginfo/" + id, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id: id, updatedInfo: newDogInfo }),
+    body: newDogInfo,
   });
 
   const data = await resp.json();

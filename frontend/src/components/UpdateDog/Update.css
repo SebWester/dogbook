@@ -9,6 +9,10 @@
   margin: auto;
 }
 
+#changePic {
+  margin: 10px auto;
+}
+
 .update-dog-info form input,
 .update-dog-info form textarea {
   margin-bottom: 20px;

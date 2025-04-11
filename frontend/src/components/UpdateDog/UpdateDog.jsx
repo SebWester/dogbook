@@ -12,11 +12,23 @@ function UpdateDog() {
     changedAge: `${thisDog.age}`,
     changedBio: `${thisDog.bio}`,
   });
+  const [profilePic, setProfilePic] = useState(null);
 
   //   On submit handler!
   function submitHandler(e) {
     e.preventDefault();
-    updateDogInfo(thisDog._id, newDogInfo);
+
+    const formData = new FormData();
+    formData.append("name", newDogInfo.changedName);
+    formData.append("nickname", newDogInfo.changedNick);
+    formData.append("age", newDogInfo.changedAge);
+    formData.append("bio", newDogInfo.changedBio);
+
+    if (profilePic) {
+      formData.append("profilePic", profilePic);
+    }
+
+    updateDogInfo(thisDog._id, formData);
   }
 
   function handleChange(e) {
@@ -33,6 +45,14 @@ function UpdateDog() {
     <div className="update-dog-info">
       <h1>Update dog info</h1>
       <form action="" onSubmit={submitHandler}>
+        {/* Update profile picture */}
+        <label htmlFor="changePic">Change profile picture:</label>
+        <input
+          type="file"
+          id="changePic"
+          onChange={(e) => setProfilePic(e.target.files[0])}
+        />
+
         {/* Update name */}
         <label htmlFor="changedName">New name: </label>
         <input
