@@ -9,7 +9,8 @@ function CreateDog() {
 
   // add submit handler
   function handleSubmit(e) {
-    e.preventDefault();
+    // Vid tester --> Avkommentera e.preventDefault
+    // e.preventDefault();
     const formData = new FormData();
     formData.append("name", newDog.name);
     formData.append("nickname", newDog.nickname);
