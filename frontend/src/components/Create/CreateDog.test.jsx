@@ -7,7 +7,7 @@ import CreateDog from "./CreateDog";
 // import fetchDogs from "../../services/fetchDogs";
 import createNewDog from "../../services/createDog";
 
-beforeAll(() => {
+beforeEach(() => {
   Object.defineProperty(HTMLFormElement.prototype, "requestSubmit", {
     value: function () {
       this.dispatchEvent(
@@ -62,14 +62,16 @@ describe("CreateDog", () => {
     expect(formDataArg.get("profilePic")).toBe(file);
   });
 
-  it("renders a link to dashboard", () => {
+  it("Renderar en länk till dashboard", () => {
     render(
       <MemoryRouter>
         <CreateDog />
       </MemoryRouter>
     );
 
-    const dashboardLink = screen.getByRole("link", { name: /to dashboard/i });
+    const dashboardLink = screen.getByRole("link", {
+      name: /to dashboard/i,
+    });
     expect(dashboardLink).toBeInTheDocument();
   });
 });

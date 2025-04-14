@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { describe, test, expect, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import Dashboard from "./Dashboard";
@@ -18,8 +18,10 @@ describe("Dashboard", () => {
       </MemoryRouter>
     );
 
-    const noDogsMessage = await screen.findByText("No dogs to show");
-    expect(noDogsMessage).toBeInTheDocument();
+    await waitFor(async () => {
+      const noDogsMessage = await screen.findByText("No dogs to show");
+      expect(noDogsMessage).toBeInTheDocument();
+    });
   });
 
   test("Renderar hundprofiler när data hämtas", async () => {
@@ -36,7 +38,9 @@ describe("Dashboard", () => {
       </MemoryRouter>
     );
 
-    const createButton = screen.getByRole("link");
-    expect(createButton).toBeInTheDocument();
+    await waitFor(() => {
+      const createButton = screen.getByRole("link");
+      expect(createButton).toBeInTheDocument();
+    });
   });
 });
