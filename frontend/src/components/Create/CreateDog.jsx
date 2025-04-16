@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import createNewDog from "../../services/createDog.js";
 import "./Create.css";
@@ -7,10 +7,16 @@ function CreateDog() {
   const [newDog, setNewDog] = useState({ name: "", age: "", bio: "" });
   const [profilePic, setProfilePic] = useState(null);
 
-  // add submit handler
   function handleSubmit(e) {
-    // Vid tester --> Avkommentera e.preventDefault
     e.preventDefault();
+
+    const createdDiv = document.getElementById("created");
+    createdDiv.classList.add("show");
+
+    setTimeout(() => {
+      createdDiv.classList.remove("show");
+    }, 2000);
+
     const formData = new FormData();
     formData.append("name", newDog.name);
     formData.append("nickname", newDog.nickname);
@@ -61,6 +67,9 @@ function CreateDog() {
 
         <input type="submit" value="Save" id="submit-button" />
       </form>
+
+      {/* Display when dog created */}
+      <div id="created">Dog created!</div>
 
       <Link to={"/"}>To dashboard</Link>
     </div>
