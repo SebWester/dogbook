@@ -1,12 +1,12 @@
 .is-here {
   font-weight: 900;
-  width: 80px;
+  width: 90px;
   font-weight: 800;
   color: rgba(10, 140, 10, 0.8);
 }
 
 .not-here {
-  width: 80px;
+  width: 90px;
   font-style: italic;
   color: rgba(220, 40, 40, 1);
 }
