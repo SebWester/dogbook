@@ -21,19 +21,19 @@ Ett fullstackprojekt för att hantera hundar på ett hunddagis – skapa, uppdat
 
 1. Backend
 
-cd backend
-npm install
-npm run devStart
-(Körs på port 3000)
+- cd backend
+- npm install
+- npm run devStart
+- (Körs på port 3000)
 
 2. Frontend
 
-cd frontend
-npm install
-npm run dev
-(Körs på port 5173)
+- cd frontend
+- npm install
+- npm run dev
+- (Körs på port 5173)
 
 ## 🚦 Testning
 
-I respektive mapp (Backend & Fronend):
-npm test
+- cd frontend/backend
+- npm test
