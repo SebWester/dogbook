@@ -38,3 +38,46 @@
 .update-dog-info a:hover {
   background-color: whitesmoke;
 }
+
+#save-button {
+  font-size: 1em;
+  padding: 2px;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+#save-button:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
+/* Update save div */
+#saved {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  background-color: rgba(255, 255, 255, 0.9);
+  display: none; /* Gömd från början */
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: green;
+  opacity: 1;
+  animation: none;
+}
+
+#saved.show {
+  display: flex;
+  animation: fadeOut 2s linear forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -5,6 +5,7 @@ import "./Update.css";
 
 function UpdateDog() {
   const location = useLocation();
+
   const thisDog = location.state;
   const [newDogInfo, setNewDogInfo] = useState({
     changedName: `${thisDog.name}`,
@@ -14,9 +15,15 @@ function UpdateDog() {
   });
   const [profilePic, setProfilePic] = useState(null);
 
-  //   On submit handler!
   function submitHandler(e) {
     e.preventDefault();
+
+    const savedDiv = document.getElementById("saved");
+    savedDiv.classList.add("show");
+
+    setTimeout(() => {
+      savedDiv.classList.remove("show");
+    }, 2000);
 
     const formData = new FormData();
     formData.append("name", newDogInfo.changedName);
@@ -38,8 +45,6 @@ function UpdateDog() {
       [id]: value,
     }));
   }
-
-  // add function for updating profile pic
 
   return (
     <div className="update-dog-info">
@@ -94,8 +99,11 @@ function UpdateDog() {
           onChange={handleChange}
         ></textarea>
 
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" id="save-button" />
       </form>
+
+      {/* Display when saving updated info */}
+      <div id="saved">Saved!</div>
 
       <Link to="/">To dashboard</Link>
     </div>
