@@ -8,9 +8,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 
-// För att kunna använda __dirname i ES-moduler
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+let uploadedFilePath = "";
 
 let mongoServer;
 let app;
@@ -19,10 +20,7 @@ beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   const uri = mongoServer.getUri();
 
-  await mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(uri);
 
   app = express();
   app.use(express.json());
@@ -36,6 +34,11 @@ afterAll(async () => {
 
 afterEach(async () => {
   await dogs.deleteMany();
+
+  if (uploadedFilePath && fs.existsSync(uploadedFilePath)) {
+    fs.unlinkSync(uploadedFilePath);
+    uploadedFilePath = "";
+  }
 });
 
 test("POST /create - should create a new dog with image", async () => {
@@ -51,5 +54,8 @@ test("POST /create - should create a new dog with image", async () => {
   expect(response.status).toBe(200);
   expect(response.body.savedDog).toHaveProperty("name", "Bosse");
   expect(response.body.savedDog).toHaveProperty("profilePic");
-  expect(fs.existsSync(response.body.savedDog.profilePic)).toBe(true);
+
+  uploadedFilePath = response.body.savedDog.profilePic;
+
+  expect(fs.existsSync(uploadedFilePath)).toBe(true);
 });
